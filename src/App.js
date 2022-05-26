@@ -1,9 +1,12 @@
 import './App.css';
 
+//components
+import Login from "./components/Login";
+
 function App() {
   return (
     <div>
-      <h1>NUS TUTOR</h1>
+      <Login />
     </div>
   );
 }
