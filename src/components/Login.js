@@ -31,7 +31,7 @@ function Login() {
     var { uname, pass } = document.forms[0];
 
     // Find user login info
-    const userData = .find((databaseuser) => user.username === uname.value);
+    const userData = database.find((databaseuser) => user.username === uname.value);
 
     // Compare user info
     if (userData) {
