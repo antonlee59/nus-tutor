@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "../css/Login.css";
+import "./Login.css";
 
 function Login() {
   // React States
@@ -31,7 +31,7 @@ function Login() {
     var { uname, pass } = document.forms[0];
 
     // Find user login info
-    const userData = database.find((databaseuser) => user.username === uname.value);
+    const userData = database.find((databaseuser) => databaseuser.username === uname.value);
 
     // Compare user info
     if (userData) {
