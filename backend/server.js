@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const connectDB = require("./db/connect");
-
+// TEST
 //Middleware
 app.use(express.json);
 app.use(cors);
