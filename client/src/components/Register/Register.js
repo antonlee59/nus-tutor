@@ -1,56 +1,41 @@
 import React, { useState } from "react";
-
+import "./Register.css";
 import { Link } from "react-router-dom";
 
-import LandingPage from '../LandingPage/LandingPage'
-import "./Login.css";
-
-function Login() {
+function Register() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // // User Login info
-  // const database = [
-  //   {
-  //     username: "user1",
-  //     password: "pass1",
-  //   },
-  //   {
-  //     username: "user2",
-  //     password: "pass2",
-  //   },
-  // ];
-
-  const errorMessage = "Invalid username and/or password"
+  const errors = "Invalid username and/or password";
 
   const handleSubmit = async (event) => {
     //Prevent page reload
     event.preventDefault();
 
-    var { uname, pass } = document.forms[0];
+    var { uname, pass, EMAIL } = document.forms[0];
     const username = uname.value;
     const password = pass.value;
+    const email = EMAIL.value;
     try {
-      const body = { username, password };
+      const body = { username, password, email };
       const jsonObj = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       };
       const response = await fetch(
-        "http://localhost:8000/api/v1/login",
+        "http://localhost:8000/api/v1/register",
         jsonObj
       );
       const userData = await response.json();
-      console.log(userData instanceof Error)
-      console.log(userData )
+      console.log(userData);
       // Compare user info
       if (userData.user) {
-          setIsSubmitted(true);
+        setIsSubmitted(true);
       } else {
         // Username not found
-        setErrorMessages({ message: errorMessage});
+        setErrorMessages({ message: errors });
       }
       window.location = "/landingpage";
     } catch (error) {
@@ -59,10 +44,9 @@ function Login() {
   };
 
   // Generate JSX code for error message
-  const renderErrorMessage = (name) =>
-     (
-      <div className="error">{errorMessages.message}</div>
-    );
+  const renderErrorMessage = (name) => (
+    <div className="error">{errorMessages.message}</div>
+  );
 
   // JSX code for login form
   const renderForm = (
@@ -71,6 +55,11 @@ function Login() {
         <div className="input-container">
           <label>Username </label>
           <input type="text" name="uname" required />
+          {/* {renderErrorMessage("uname")} */}
+        </div>
+        <div className="input-container">
+          <label>Email </label>
+          <input type="text" name="EMAIL" required />
           {/* {renderErrorMessage("uname")} */}
         </div>
         <div className="input-container">
@@ -88,12 +77,13 @@ function Login() {
   return (
     <div className="app">
       <div className="login-form">
-        <div className="title">Sign In</div>
-        {isSubmitted ? <LandingPage /> : renderForm}
-        <Link to="/register">Register now</Link>
+        <div className="title">Register Now</div>
+        {isSubmitted ? (window.location = "/landingpage") : renderForm}
+        <div>Already have an account?</div>
+        <Link to="/">Login here</Link>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Register;
