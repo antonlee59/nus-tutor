@@ -1,12 +1,4 @@
-import {
-  Box,
-  Container,
-  createTheme,
-  Paper,
-  Stack,
-  styled,
-  ThemeProvider,
-} from "@mui/material";
+import { Box, createTheme, Stack, ThemeProvider } from "@mui/material";
 import React, { useState } from "react";
 
 import Sidebar from "./Sidebar";
