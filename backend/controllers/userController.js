@@ -28,6 +28,7 @@ const addUser = async (req,res) => {
     res.json(user);
 };
 
+//update function not exactly working... 
 const updateUser =
     async (req, res) => {
       User.findByIdAndUpdate(req.body.id, req.body, {

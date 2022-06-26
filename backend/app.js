@@ -8,6 +8,8 @@ const cors = require("cors");
 const userRoutes = require("./routes/userRoute");
 const userController = require("./controllers/userController");
 
+const postRoutes = require("./routes/postRoute");
+const postController = require("./controllers/postController");
 
 const authRouter = require("./routes/auth");
 const notFoundMiddleware = require("./middleware/not-found");
@@ -24,7 +26,8 @@ app.use("/api/v1", authRouter);
 
 //app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
-app.use("/user", userRoutes); // to use the routes 
+app.use("/user", userRoutes); // to use userRoutes 
+app.use("/post", postRoutes); // to use postRoutes
 
 //Set the thing to whatever it is the PORT or 8000 by default
 const port = process.env.PORT || 8000;
