@@ -6,7 +6,15 @@ const Post = require('../models/Post')
 const Comment = require('../models/Comment')
 
 // get info fr
-postController.get('')
+const getAllPosts = (req,res) => {
+    Post.find({}, (err, result) => {
+        if (err) {
+            res.json(err);
+        } else {
+            res.json(result);
+        }
+    });
+};
 
 
 // I copied and pasted some stuff from the web first 
