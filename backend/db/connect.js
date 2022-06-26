@@ -1,12 +1,9 @@
 // const { application, Router } = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
-const express = require("express");
-const Router = require("./../routes/routes.js")
-const app = express();
+
 
 const uri = process.env.MONGO_URI;
-console.log(uri);
 
 const connectDB = (uri) => {
   return mongoose.connect(uri),

@@ -1,6 +1,12 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const shortid = require('shortid');
 
 const postSchema = new mongoose.Schema({
+    shortid: {
+        type: String,
+        unique: true,
+        default: shortid.generate,
+    },
     title: {
         type: String,
         required: true,
@@ -63,5 +69,6 @@ postSchema.methods.commentOnPost = function commentOnPost(content) {
     }
     return comment;
 }
+
 
 module.exports = mongoose.model('Post', PostSchema)
