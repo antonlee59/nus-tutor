@@ -8,9 +8,6 @@ const postSchema = new mongoose.Schema({
     text: {
         type: String,
     },
-    link: {
-        type: String,
-    },
     created: {
         type: Date,
         default: Date.now(),
@@ -18,9 +15,6 @@ const postSchema = new mongoose.Schema({
     author: {
         type: mongoose.Schema.ObjectId,
         ref: "User",
-    },
-    username: {
-        type: String,
     },
     score: {
         type: Number,
