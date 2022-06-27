@@ -1,10 +1,27 @@
 import { Box, Stack, Skeleton } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Post from "./Post";
-import posts from "./SampleData";
+import sampleposts from "./SampleData";
 
 const Feed = () => {
   const [loading, setLoading] = useState(true);
+
+  const [posts, setPosts] = useState([]);
+  const getPosts = async() => {
+    try {
+      const response = await fetch("http://localhost:8000/post");
+      const jsonData = await response.json();
+      const data = jsonData.reverse();
+
+      setPosts(data);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getPosts();
+  }, [])
 
   setTimeout(() => {
     setLoading(false);
@@ -25,15 +42,15 @@ const Feed = () => {
             console.log(index);
             return <Post key={index} post={post} />;
           })}
-          {posts.map((post, index) => {
+          {sampleposts.map((post, index) => {
             console.log(index);
             return <Post key={index} post={post} />;
           })}
-          {posts.map((post, index) => {
+          {sampleposts.map((post, index) => {
             console.log(index);
             return <Post key={index} post={post} />;
           })}
-          {posts.map((post, index) => {
+          {sampleposts.map((post, index) => {
             console.log(index);
             return <Post key={index} post={post} />;
           })}

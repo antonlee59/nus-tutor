@@ -17,7 +17,7 @@ import {
   Typography,
 } from "@mui/material";
 const Post = (props) => {
-  let { user, content, date, comments, likes } = props.post;
+  let { title, author, content, date, comments, likes } = props.post;
   return (
     <Card sx={{ margin: 5 }}>
       <CardActionArea>
@@ -28,12 +28,12 @@ const Post = (props) => {
               <MoreVert />
             </IconButton>
           }
-          title={user}
+          title= "Anton Lee"
           subheader={date}
         />
         <CardContent>
           <Typography variant="body2" color="text.primary">
-            {content}
+            {title}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
@@ -49,7 +49,7 @@ const Post = (props) => {
             </Badge>
           </IconButton>
           <IconButton aria-label="Comments">
-            <Typography>{comments} Comments</Typography>
+            <Typography>{comments.length} Comments</Typography>
           </IconButton>
         </CardActions>
       </CardActionArea>

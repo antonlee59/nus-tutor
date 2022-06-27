@@ -42,9 +42,8 @@ const Add = () => {
     Axios.post("http://localhost:8000/post/add",
     {title}
     )
-    .then((res) => {
-      alert("Post created");
-    })
+    setOpen(false);
+    window.location = '/landingpage';
   }
 
 //   //////  new added stuff  /////////
