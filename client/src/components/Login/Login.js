@@ -10,7 +10,6 @@ function Login() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { saveUser } = useGlobalContext();
 
   // // User Login info
   // const database = [
@@ -52,7 +51,6 @@ function Login() {
         // Username not found
         setErrorMessages({ message: errorMessage });
       }
-      saveUser(userData.user);
       // window.location = "/landingpage";
     } catch (error) {
       console.error(error.message);
