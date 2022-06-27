@@ -41,17 +41,27 @@
   </ul>
 <h1>How to use our app?</h1>
 <ul>
-  <li>Install git on your machine</li>
   <li>Clone our repository by running the command </li>
   <code>git clone https://github.com/antonlee59/nus-tutor.git</code>
-  <li>Change directory to nus-tutor/backend by running </li>
+  
+  <li>Split your terminal into two (run the client on one terminal and the server on the other terminal) </li>
+  <li>On the first terminal, change directory to nus-tutor/backend by running </li>
   <code>cd nus-tutor/backend</code>
-  <li>And then run the following commands</li>
+  <li>And then run the following command</li>
   <code>npm install</code>
+  <li>Then, create a .env file</li>
+  <li> Provide the following credentials </li>
+  ```
+MONGO_URI = 
+JWT_SECRET = 
+JWT_LIFETIME = 
+```
+  <li>And then run the following command</li>
   <code>npm start</code>
-  <li>Change directory to nus-tutor/client by running </li>
+  
+  <li>On the second terminal, change directory to nus-tutor/client by running </li>
   <code>cd nus-tutor/client</code>
   <li>And then run the following commands</li>
   <code>npm install</code>
   <code>npm start</code>
-  </ul>
+</ul>
