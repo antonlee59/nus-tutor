@@ -60,6 +60,6 @@ JWT_LIFETIME = <br>
   <li>On the second terminal, change directory to nus-tutor/client by running </li>
   <code>cd nus-tutor/client</code>
   <li>And then run the following commands</li>
-  <code>npm install</code>
+  <code>npm install</code> <br>
   <code>npm start</code>
 </ul>
