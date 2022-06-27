@@ -13,6 +13,8 @@ import {
 import React, { useState } from "react";
 import { Add as AddIcon, EmojiEmotions, Image } from "@mui/icons-material";
 import { Box } from "@mui/system";
+import { useEffect } from "react";
+import Axios from "axios";
 
 const SytledModal = styled(Modal)({
   display: "flex",
@@ -32,41 +34,52 @@ const UserBox = styled(Box)({
 
 // trying to connect front and back end 
 const Add = () => {
-const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState("");
+
+
+  const createPost = () => {
+    Axios.post("http://localhost:8000/post/add",
+    {title}
+    )
+    .then((res) => {
+      alert("Post created");
+    })
+  }
 
 //   //////  new added stuff  /////////
   
-//   const handleSubmit = async (event) => {
-//     //Prevent page reload
-//     event.preventDefault();
+  // const handleSubmit = async (event) => {
+  //   //Prevent page reload
+  //   event.preventDefault();
 
-//     var { TITLE } = document.forms[0];
-//     const title = TITLE.value;
-//     try {
-//       const body = { title };
-//       const jsonObj = {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify(body),
-//       };
-//       const response = await fetch(
-//         "http://localhost:8000/post/add",
-//         jsonObj
-//       );
-//       const postData = await response.json();
-//       console.log(postData);
-//       // // Compare user info
-//       // if (postData.user) {
-//       //   setIsSubmitted(true);
-//       // } else {
-//       //   // Username not found
-//       //   setErrorMessages({ message: errors });
-//       // }
-//       window.location = "/landingpage";
-//     } catch (error) {
-//       console.error(error.message);
-//     }
-//   };
+  //   var { TITLE } = document.forms[0];
+  //   const title = TITLE.value;
+  //   try {
+  //     const body = { title };
+  //     const jsonObj = {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(body),
+  //     };
+  //     const response = await fetch(
+  //       "http://localhost:8000/post/add",
+  //       jsonObj
+  //     );
+  //     const postData = await response.json();
+  //     console.log(postData);
+  //     // // Compare user info
+  //     // if (postData.user) {
+  //     //   setIsSubmitted(true);
+  //     // } else {
+  //     //   // Username not found
+  //     //   setErrorMessages({ message: errors });
+  //     // }
+  //     window.location = "/landingpage";
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // };
 
   return (
     <>
@@ -103,7 +116,7 @@ const [open, setOpen] = useState(false);
           <UserBox>
             <Avatar sx={{ bgcolor: "red", width: 30, height: 30 }} />
             <Typography fontWeight={500} variant="span">
-              Anton Lee
+              user1
             </Typography>
           </UserBox>
           <TextField
@@ -112,6 +125,7 @@ const [open, setOpen] = useState(false);
             multiline
             rows={3}
             placeholder="What's on your mind?"
+            onChange= {(event) => {setTitle(event.target.value);}}
             variant="standard"
           />
           <Stack direction="row" gap={1} mt={2} mb={3}>
@@ -123,7 +137,7 @@ const [open, setOpen] = useState(false);
             variant="contained"
             aria-label="outlined primary button group"
           >
-            <Button>Post</Button>
+            <Button onClick = {createPost}>Post</Button>
           </ButtonGroup>
         </Box>
       </SytledModal>
