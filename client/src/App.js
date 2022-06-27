@@ -6,6 +6,7 @@ import Login from "./components/Login/Login";
 import LandingPage from "./components/LandingPage/LandingPage";
 import Register from "./components/Register/Register";
 import UserDisplay from "./components/UserDisplay/UserDisplay";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="landingpage" element={<LandingPage />} />
         <Route path="UserDisplay" element={<UserDisplay />} />
+        <Route path = "*" element = {<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );

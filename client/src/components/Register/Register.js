@@ -26,7 +26,7 @@ function Register() {
         body: JSON.stringify(body),
       };
       const response = await fetch(
-        "http://localhost:8000/user/addUser",
+        "http://localhost:8000/api/v1/register",
         jsonObj
       );
       const userData = await response.json();

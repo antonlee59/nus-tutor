@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, Route, Navigate } from "react-router-dom";
+import { useGlobalContext } from "../../context";
 
-import LandingPage from '../LandingPage/LandingPage'
+import LandingPage from "../LandingPage/LandingPage";
 import "./Login.css";
 
 function Login() {
@@ -22,7 +23,7 @@ function Login() {
   //   },
   // ];
 
-  const errorMessage = "Invalid username and/or password"
+  const errorMessage = "Invalid username and/or password";
 
   const handleSubmit = async (event) => {
     //Prevent page reload
@@ -43,57 +44,52 @@ function Login() {
         jsonObj
       );
       const userData = await response.json();
-      console.log(userData instanceof Error)
-      console.log(userData )
       // Compare user info
       if (userData.user) {
-          setIsSubmitted(true);
+        setIsSubmitted(true);
       } else {
         // Username not found
-        setErrorMessages({ message: errorMessage});
+        setErrorMessages({ message: errorMessage });
       }
-      window.location = "/landingpage";
+      // window.location = "/landingpage";
     } catch (error) {
       console.error(error.message);
     }
   };
 
   // Generate JSX code for error message
-  const renderErrorMessage = (name) =>
-     (
-      <div className="error">{errorMessages.message}</div>
-    );
+  const renderErrorMessage = (name) => (
+    <div className="error">{errorMessages.message}</div>
+  );
 
   // JSX code for login form
   const renderForm = (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <div className="input-container">
-          <label>Username </label>
-          <input type="text" name="uname" required />
-          {/* {renderErrorMessage("uname")} */}
-        </div>
-        <div className="input-container">
-          <label>Password </label>
-          <input type="password" name="pass" required />
-          {renderErrorMessage("pass")}
-        </div>
-        <div className="button-container">
-          <input type="submit" />
-        </div>
-      </form>
-    </div>
-  );
-
-  return (
     <div className="app">
       <div className="login-form">
         <div className="title">Sign In</div>
-        {isSubmitted ? <LandingPage /> : renderForm}
+        <div className="form">
+          <form onSubmit={handleSubmit}>
+            <div className="input-container">
+              <label>Username </label>
+              <input type="text" name="uname" required />
+              {/* {renderErrorMessage("uname")} */}
+            </div>
+            <div className="input-container">
+              <label>Password </label>
+              <input type="password" name="pass" required />
+              {renderErrorMessage("pass")}
+            </div>
+            <div className="button-container">
+              <input type="submit" />
+            </div>
+          </form>
+        </div>
         <Link to="/register">Register now</Link>
       </div>
     </div>
   );
+
+  return <div>{isSubmitted ? <Navigate to="/landingpage" /> : renderForm}</div>;
 }
 
 export default Login;
