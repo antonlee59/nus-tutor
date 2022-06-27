@@ -18,4 +18,29 @@
 // }
   
 //   export default UserDisplay;
-  
+
+import {useState, useEffect} from "react";
+import Axios from "axios";
+
+const UserDisplay = () => {
+    const [listOfUsers, setListOfUsers] = useState([]);
+    useEffect(() => {
+        Axios.get("http://localhost:8000/user").then((res) => {
+            setListOfUsers(res.data);
+        })
+    }, [])
+   // alert(listOfUsers);
+    return (
+            listOfUsers.map((user) => {
+                return (
+                    <div>
+                    <h1> Username: {user.username}</h1>
+                    <h1> email: {user.email}</h1>
+                    </div>
+                )
+            })
+        )
+
+}
+
+export default UserDisplay;
