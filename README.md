@@ -51,11 +51,9 @@
   <code>npm install</code>
   <li>Then, create a .env file</li>
   <li> Provide the following credentials </li>
-  ```
-MONGO_URI = 
-JWT_SECRET = 
-JWT_LIFETIME = 
-```
+MONGO_URI = <br>
+JWT_SECRET = <br>
+JWT_LIFETIME = <br>
   <li>And then run the following command</li>
   <code>npm start</code>
   
