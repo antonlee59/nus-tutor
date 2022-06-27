@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Register.css";
 import { Link } from "react-router-dom";
+import { Axios } from "axios";
 
 function Register() {
   // React States
@@ -25,7 +26,7 @@ function Register() {
         body: JSON.stringify(body),
       };
       const response = await fetch(
-        "http://localhost:8000/api/v1/register",
+        "http://localhost:8000/user/addUser",
         jsonObj
       );
       const userData = await response.json();
