@@ -27,8 +27,47 @@ const UserBox = styled(Box)({
   marginBottom: "20px",
 });
 
+
+
+
+// trying to connect front and back end 
 const Add = () => {
-  const [open, setOpen] = useState(false);
+const [open, setOpen] = useState(false);
+
+//   //////  new added stuff  /////////
+  
+//   const handleSubmit = async (event) => {
+//     //Prevent page reload
+//     event.preventDefault();
+
+//     var { TITLE } = document.forms[0];
+//     const title = TITLE.value;
+//     try {
+//       const body = { title };
+//       const jsonObj = {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(body),
+//       };
+//       const response = await fetch(
+//         "http://localhost:8000/post/add",
+//         jsonObj
+//       );
+//       const postData = await response.json();
+//       console.log(postData);
+//       // // Compare user info
+//       // if (postData.user) {
+//       //   setIsSubmitted(true);
+//       // } else {
+//       //   // Username not found
+//       //   setErrorMessages({ message: errors });
+//       // }
+//       window.location = "/landingpage";
+//     } catch (error) {
+//       console.error(error.message);
+//     }
+//   };
+
   return (
     <>
       <Tooltip
